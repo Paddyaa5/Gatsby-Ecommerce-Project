@@ -1,7 +1,7 @@
 ---
 title: Indigo.
 price: from £12.00
-type: candle
+type: candles
 slug: indigo
 img: ../images/INDIGO.jpg
 ---

@@ -36,17 +36,29 @@ const StyledItem = styled.div`
       margin: 10px 0;
     }
   }
+  img {
+    object-fit: cover;
+  }
 `
 
 export const query = graphql`
-  query {
-    allMarkdownRemark {
+  query MyQuery {
+    items: allMarkdownRemark(sort: { fields: frontmatter___type }) {
       nodes {
         frontmatter {
+          img {
+            childImageSharp {
+              gatsbyImageData(
+                blurredOptions: { width: 100 }
+                formats: WEBP
+                placeholder: BLURRED
+              )
+            }
+          }
           price
           slug
           title
-          img
+          type
         }
         id
       }
@@ -60,7 +72,12 @@ const Shop = ({ data }) => {
       <PageStyle>
         <StyledContainer>
           {items.map(item => (
-            <Link to={"/shop/" + item.frontmatter.slug} key={item.id}>
+            <Link
+              to={
+                "/shop/" + item.frontmatter.type + "/" + item.frontmatter.slug
+              }
+              key={item.id}
+            >
               <StyledItem>
                 <GatsbyImage
                   image={getImage(item.frontmatter.img)}

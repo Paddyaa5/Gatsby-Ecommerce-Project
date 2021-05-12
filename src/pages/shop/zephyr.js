@@ -1,7 +1,7 @@
 import React from "react"
-// import { Link, graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 import styled from "styled-components"
-// import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 //components
 import Layout from "../../components/Layout"
 //styles
@@ -38,32 +38,45 @@ const StyledItem = styled.div`
   }
 `
 
-// export const query = graphql`
-//   query ItemQuery {
-//     items: allMarkdownRemark(
-//       filter: { frontmatter: { type: { eq: "zephyr" } } }
-//     ) {
-//       nodes {
-//         frontmatter {
-//           price
-//           slug
-//           title
-//           img
-//         }
-//         id
-//       }
-//     }
-//   }
-// `
-const Zephyr = () => {
-  // const Shop = ({ data }) => {
-  //   const items = data.items.nodes
+export const query = graphql`
+  query {
+    items: allMarkdownRemark(
+      filter: { frontmatter: { type: { eq: "zephyr" } } }
+    ) {
+      nodes {
+        frontmatter {
+          price
+          slug
+          title
+          type
+          img {
+            childImageSharp {
+              gatsbyImageData(
+                blurredOptions: { width: 100 }
+                formats: WEBP
+                placeholder: BLURRED
+              )
+            }
+          }
+        }
+        id
+      }
+    }
+  }
+`
+const Zephyr = ({ data }) => {
+  const items = data.items.nodes
   return (
     <Layout>
       <PageStyle>
         <StyledContainer>
-          {/* {items.map(item => (
-            <Link to={"/shop/" + item.frontmatter.slug} key={item.id}>
+          {items.map(item => (
+            <Link
+              to={
+                "/shop/" + item.frontmatter.type + "/" + item.frontmatter.slug
+              }
+              key={item.id}
+            >
               <StyledItem>
                 <GatsbyImage
                   image={getImage(item.frontmatter.img)}
@@ -75,8 +88,7 @@ const Zephyr = () => {
                 </div>
               </StyledItem>
             </Link>
-          ))} */}
-          <h1>Hi</h1>
+          ))}
         </StyledContainer>
       </PageStyle>
     </Layout>

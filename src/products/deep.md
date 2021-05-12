@@ -1,7 +1,7 @@
 ---
 title: Deep.
 price: from £24.00
-type: diffuser
+type: diffusers
 slug: deep
 img: ../images/deepdiff.jpg
 ---

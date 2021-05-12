@@ -1,7 +1,7 @@
 ---
 title: Pitch.
 price: from £24.00
-type: diffuser
+type: diffusers
 slug: pitch
 img: ../images/pitchdiff.jpg
 ---

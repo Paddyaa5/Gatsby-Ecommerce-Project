@@ -12,7 +12,16 @@ export const productQuery = graphql`
       frontmatter {
         price
         title
-        img
+        type
+        img {
+          childImageSharp {
+            gatsbyImageData(
+              blurredOptions: { width: 100 }
+              formats: WEBP
+              placeholder: BLURRED
+            )
+          }
+        }
       }
     }
   }

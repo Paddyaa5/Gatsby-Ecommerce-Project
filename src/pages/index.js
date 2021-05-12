@@ -117,7 +117,7 @@ const Home = () => {
       delay: 0.5,
     })
       .set(left, { opacity: 1 })
-      .to(left, { duration: 1.3, x: "100%", ease: "power4.inOut" }, "+=1")
+      .to(left, { duration: 1.3, x: "99.5%", ease: "power4.inOut" }, "+=1")
       .to(right, { duration: 1.3, x: "100%", ease: "power4.inOut" }, "-=1.3")
       .to([inner1, inner2, inner3], {
         opacity: 1,
@@ -152,9 +152,24 @@ const Home = () => {
       </div>
       <div className="right-column column" ref={el => (right = el)}>
         <div className="images">
-          <div className="square" ref={el => (box1 = el)} id="img1"></div>
-          <div className="square" ref={el => (box2 = el)} id="img2"></div>
-          <div className="square" ref={el => (box3 = el)} id="img3"></div>
+          <Link
+            to="/shop/diffusers"
+            className="square"
+            ref={el => (box1 = el)}
+            id="img1"
+          ></Link>
+          <Link
+            to="/shop/zephyr"
+            className="square"
+            ref={el => (box2 = el)}
+            id="img2"
+          ></Link>
+          <Link
+            to="/shop/candles"
+            className="square"
+            ref={el => (box3 = el)}
+            id="img3"
+          ></Link>
         </div>
         <div className="text">
           <h5 ref={el => (subtitle = el)}>Welcome to</h5>

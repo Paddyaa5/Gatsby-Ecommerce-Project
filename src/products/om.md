@@ -1,7 +1,7 @@
 ---
 title: Om.
 price: from £12.00
-type: candle
+type: candles
 slug: om
 img: ../images/OM.jpg
 ---

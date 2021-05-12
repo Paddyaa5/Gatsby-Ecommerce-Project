@@ -1,7 +1,7 @@
 ---
 title: Bed.
 price: from £24.00
-type: diffuser
+type: diffusers
 slug: bed
 img: ../images/beddiff.jpg
 ---

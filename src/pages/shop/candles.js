@@ -39,16 +39,25 @@ const StyledItem = styled.div`
 `
 
 export const query = graphql`
-  query ItemQuery {
+  query {
     items: allMarkdownRemark(
-      filter: { frontmatter: { type: { eq: "candle" } } }
+      filter: { frontmatter: { type: { eq: "candles" } } }
     ) {
       nodes {
         frontmatter {
           price
           slug
           title
-          img
+          type
+          img {
+            childImageSharp {
+              gatsbyImageData(
+                blurredOptions: { width: 100 }
+                formats: WEBP
+                placeholder: BLURRED
+              )
+            }
+          }
         }
         id
       }
@@ -62,7 +71,12 @@ const Candles = ({ data }) => {
       <PageStyle>
         <StyledContainer>
           {items.map(item => (
-            <Link to={"/shop/" + item.frontmatter.slug} key={item.id}>
+            <Link
+              to={
+                "/shop/" + item.frontmatter.type + "/" + item.frontmatter.slug
+              }
+              key={item.id}
+            >
               <StyledItem>
                 <GatsbyImage
                   image={getImage(item.frontmatter.img)}
