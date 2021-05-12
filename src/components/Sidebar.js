@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
+import { GlobalStateContext } from "../context/GlobalContextProvider"
 import styled from "styled-components"
 import {
   FaShoppingCart,
@@ -98,6 +99,7 @@ const Sidebar = () => {
     }
   `)
   const { title, copyright } = data.site.siteMetadata
+  const state = useContext(GlobalStateContext)
 
   return (
     <StyledSidebar>
@@ -107,7 +109,7 @@ const Sidebar = () => {
         </Link>
         <div className="cart-section">
           <FaShoppingCart></FaShoppingCart>
-          <div className="circle">0</div>
+          <div className="circle">{state.basketCounter}</div>
         </div>
       </div>
       <div className="menu-list">

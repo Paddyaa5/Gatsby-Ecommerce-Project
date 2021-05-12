@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
+import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 
 const StyledButton = styled.button`
   border-radius: 25px;
@@ -18,5 +19,14 @@ const StyledButton = styled.button`
 `
 
 export default function Button({ text }) {
-  return <StyledButton>{text}</StyledButton>
+  const dispatch = useContext(GlobalDispatchContext)
+  return (
+    <StyledButton
+      onClick={() => {
+        dispatch({ type: "INCREMENT_BASKET" })
+      }}
+    >
+      {text}
+    </StyledButton>
+  )
 }

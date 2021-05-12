@@ -5,7 +5,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/Layout"
 //styles
 import { ProductPageStyle } from "../styles/globalStyles"
-import Button from "../components/Button"
+import AddBasketButton from "../components/AddBasketButton"
 
 export const productQuery = graphql`
   query ProductDetails($slug: String) {
@@ -33,9 +33,6 @@ export const productQuery = graphql`
 const ProductTemplate = ({ data }) => {
   const { title, price, img } = data.markdownRemark.frontmatter
 
-  const handleBasket = () => {
-    console.log("buy")
-  }
   return (
     <Layout>
       <ProductPageStyle>
@@ -54,7 +51,7 @@ const ProductTemplate = ({ data }) => {
             veritatis labore possimus ex ducimus consectetur!
           </p>
           <h4>{price}</h4>
-          <Button text="Add To Cart" onClick={() => handleBasket()} />
+          <AddBasketButton text="Add To Cart" />
         </div>
       </ProductPageStyle>
     </Layout>

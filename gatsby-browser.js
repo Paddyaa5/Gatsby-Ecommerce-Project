@@ -1,5 +1,6 @@
 import React from "react"
 import { ThemeProvider, createGlobalStyle } from "styled-components"
+import GlobalContextProvider from "./src/context/GlobalContextProvider"
 
 const Theme = {
   fonts: {
@@ -41,8 +42,10 @@ const GlobalStyle = createGlobalStyle`
 `
 
 export const wrapRootElement = ({ element }) => (
-  <ThemeProvider theme={Theme}>
-    <GlobalStyle />
-    {element}
-  </ThemeProvider>
+  <GlobalContextProvider>
+    <ThemeProvider theme={Theme}>
+      <GlobalStyle />
+      {element}
+    </ThemeProvider>
+  </GlobalContextProvider>
 )
