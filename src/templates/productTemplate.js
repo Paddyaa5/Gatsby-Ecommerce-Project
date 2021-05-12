@@ -5,6 +5,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/Layout"
 //styles
 import { ProductPageStyle } from "../styles/globalStyles"
+import Button from "../components/Button"
 
 export const productQuery = graphql`
   query ProductDetails($slug: String) {
@@ -16,9 +17,11 @@ export const productQuery = graphql`
         img {
           childImageSharp {
             gatsbyImageData(
-              blurredOptions: { width: 100 }
-              formats: WEBP
               placeholder: BLURRED
+              formats: WEBP
+              width: 550
+              height: 500
+              transformOptions: { fit: COVER, cropFocus: CENTER }
             )
           }
         }
@@ -29,13 +32,29 @@ export const productQuery = graphql`
 
 const ProductTemplate = ({ data }) => {
   const { title, price, img } = data.markdownRemark.frontmatter
+
+  const handleBasket = () => {
+    console.log("buy")
+  }
   return (
     <Layout>
       <ProductPageStyle>
         <GatsbyImage image={getImage(img)} alt={title} />
-        <div>
+        <div className="product-info">
           <h2>{title}</h2>
+          <p>
+            <strong>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            </strong>
+          </p>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore
+            tenetur, reprehenderit assumenda fugit beatae illo, aspernatur
+            eligendi praesentium ab, eum laboriosam consequuntur minima ipsam
+            veritatis labore possimus ex ducimus consectetur!
+          </p>
           <h4>{price}</h4>
+          <Button text="Add To Cart" onClick={() => handleBasket()} />
         </div>
       </ProductPageStyle>
     </Layout>

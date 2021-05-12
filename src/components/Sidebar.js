@@ -1,7 +1,12 @@
 import React from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
-import { FaShoppingCart } from "react-icons/fa"
+import {
+  FaShoppingCart,
+  FaInstagram,
+  FaFacebook,
+  FaTwitter,
+} from "react-icons/fa"
 
 const StyledSidebar = styled.section`
   position: fixed;
@@ -32,20 +37,21 @@ const StyledSidebar = styled.section`
       svg {
         z-index: 1;
         position: absolute;
-        font-size: 34px;
+        font-size: 30px;
       }
       .circle {
         position: absolute;
         left: 10px;
         top: -12px;
         border-radius: 50%;
-        width: 30px;
-        height: 30px;
+        width: 28px;
+        height: 28px;
         background-color: pink;
         display: flex;
         align-items: center;
         justify-content: center;
         font-family: ${props => props.theme.fonts.text};
+        font-size: 11px;
       }
     }
   }
@@ -68,6 +74,15 @@ const StyledSidebar = styled.section`
   }
   .active {
     border-bottom: 2px solid ${props => props.theme.colors.dark};
+  }
+  .icons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  svg {
+    cursor: pointer;
   }
 `
 
@@ -109,7 +124,14 @@ const Sidebar = () => {
           Zepher
         </Link>
       </div>
-      <p>{copyright}</p>
+      <div className="footer">
+        <div className="icons">
+          <FaFacebook />
+          <FaInstagram />
+          <FaTwitter />
+        </div>
+        <p>{copyright}</p>
+      </div>
     </StyledSidebar>
   )
 }
