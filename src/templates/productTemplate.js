@@ -17,11 +17,9 @@ export const productQuery = graphql`
         img {
           childImageSharp {
             gatsbyImageData(
+              formats: [WEBP, AUTO]
               placeholder: BLURRED
-              formats: WEBP
-              width: 550
-              height: 500
-              transformOptions: { fit: COVER, cropFocus: CENTER }
+              transformOptions: { cropFocus: CENTER, fit: COVER }
             )
           }
         }
@@ -32,7 +30,7 @@ export const productQuery = graphql`
 
 const ProductTemplate = ({ data }) => {
   const { title, price, img } = data.markdownRemark.frontmatter
-
+  console.log({ title, price, img })
   return (
     <Layout>
       <ProductPageStyle>

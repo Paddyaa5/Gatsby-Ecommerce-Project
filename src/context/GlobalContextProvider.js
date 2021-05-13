@@ -5,6 +5,7 @@ export const GlobalDispatchContext = createContext()
 
 const initialState = {
   basketCounter: 0,
+  basket: [],
 }
 function basketCounterReducer(state, action) {
   switch (action.type) {

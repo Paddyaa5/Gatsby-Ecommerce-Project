@@ -5,17 +5,17 @@ import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 //styles
 import { StyledButton } from "../styles/globalStyles"
 
-const AddBasketButton = styled(StyledButton)``
+const ClearBasketButton = styled(StyledButton)``
 
 export default function Button({ text }) {
   const dispatch = useContext(GlobalDispatchContext)
   return (
-    <AddBasketButton
+    <ClearBasketButton
       onClick={() => {
-        dispatch({ type: "INCREMENT_BASKET" })
+        dispatch({ type: "CLEAR_BASKET" })
       }}
     >
       {text}
-    </AddBasketButton>
+    </ClearBasketButton>
   )
 }

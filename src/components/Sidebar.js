@@ -33,11 +33,11 @@ const StyledSidebar = styled.section`
     }
     .cart-section {
       position: relative;
-      justify-content: center;
       display: flex;
+      justify-content: center;
       svg {
-        z-index: 1;
         position: absolute;
+        z-index: 1;
         font-size: 30px;
       }
       .circle {
@@ -107,10 +107,10 @@ const Sidebar = () => {
         <Link to="/">
           <h1>{title}</h1>
         </Link>
-        <div className="cart-section">
+        <Link to="/shop/basket" className="cart-section">
           <FaShoppingCart></FaShoppingCart>
           <div className="circle">{state.basketCounter}</div>
-        </div>
+        </Link>
       </div>
       <div className="menu-list">
         <Link to="/shop" activeClassName="active">
