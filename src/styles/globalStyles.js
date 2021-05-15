@@ -54,3 +54,22 @@ export const StyledButton = styled.button`
     color: ${props => props.theme.colors.light};
   }
 `
+export const StyledItem = styled.div`
+  position: relative;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .text-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: ${props => props.theme.colors.dark};
+    h1 {
+      margin: 10px 0;
+    }
+  }
+`

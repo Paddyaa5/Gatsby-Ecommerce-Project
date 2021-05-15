@@ -5,7 +5,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 //components
 import Layout from "../../components/Layout"
 //styles
-import { PageStyle } from "../../styles/globalStyles"
+import { PageStyle, StyledItem } from "../../styles/globalStyles"
 
 const StyledContainer = styled.div`
   display: grid;
@@ -15,26 +15,6 @@ const StyledContainer = styled.div`
   grid-gap: 80px 0px;
   a {
     justify-self: center;
-  }
-`
-const StyledItem = styled.div`
-  position: relative;
-  height: calc(45vw - 100px);
-  width: calc(45vw - 100px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  .text-container {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: ${props => props.theme.colors.dark};
-    h1 {
-      margin: 10px 0;
-    }
   }
 `
 
@@ -86,7 +66,7 @@ const Zephyr = ({ data }) => {
                 />
                 <div className="text-container">
                   <h1>{item.frontmatter.title}</h1>
-                  <h5>{item.frontmatter.price}</h5>
+                  <h5>£{item.frontmatter.price.toFixed(2)}</h5>
                 </div>
               </StyledItem>
             </Link>

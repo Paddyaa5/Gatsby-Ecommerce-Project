@@ -30,7 +30,6 @@ export const productQuery = graphql`
 
 const ProductTemplate = ({ data }) => {
   const { title, price, img } = data.markdownRemark.frontmatter
-  console.log({ title, price, img })
   return (
     <Layout>
       <ProductPageStyle>
@@ -48,8 +47,13 @@ const ProductTemplate = ({ data }) => {
             eligendi praesentium ab, eum laboriosam consequuntur minima ipsam
             veritatis labore possimus ex ducimus consectetur!
           </p>
-          <h4>{price}</h4>
-          <AddBasketButton text="Add To Cart" />
+          <h4>£{price.toFixed(2)}</h4>
+          <AddBasketButton
+            text="Add To Cart"
+            title={title}
+            price={price}
+            image={img}
+          />
         </div>
       </ProductPageStyle>
     </Layout>

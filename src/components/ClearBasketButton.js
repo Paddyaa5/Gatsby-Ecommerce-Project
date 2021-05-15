@@ -1,18 +1,23 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
 //state
-import { GlobalDispatchContext } from "../context/GlobalContextProvider"
+import { CartContext } from "../context/GlobalContextProvider"
 //styles
 import { StyledButton } from "../styles/globalStyles"
 
 const ClearBasketButton = styled(StyledButton)``
 
 export default function Button({ text }) {
-  const dispatch = useContext(GlobalDispatchContext)
+  const { cartContext, totalContext } = useContext(CartContext)
+  const [cart, setCart] = cartContext
+  const [total, setTotal] = totalContext
+  console.log(cart)
+  console.log(total)
   return (
     <ClearBasketButton
       onClick={() => {
-        dispatch({ type: "CLEAR_BASKET" })
+        setCart([])
+        setTotal(0)
       }}
     >
       {text}

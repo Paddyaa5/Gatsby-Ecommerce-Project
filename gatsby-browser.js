@@ -1,6 +1,6 @@
 import React from "react"
 import { ThemeProvider, createGlobalStyle } from "styled-components"
-import GlobalContextProvider from "./src/context/GlobalContextProvider"
+import { CartProvider } from "./src/context/GlobalContextProvider"
 
 const Theme = {
   fonts: {
@@ -12,7 +12,6 @@ const Theme = {
     light: "#FFF8EE",
   },
 }
-
 const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
@@ -42,10 +41,10 @@ const GlobalStyle = createGlobalStyle`
 `
 
 export const wrapRootElement = ({ element }) => (
-  <GlobalContextProvider>
+  <CartProvider>
     <ThemeProvider theme={Theme}>
       <GlobalStyle />
       {element}
     </ThemeProvider>
-  </GlobalContextProvider>
+  </CartProvider>
 )

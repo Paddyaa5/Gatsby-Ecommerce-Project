@@ -76,11 +76,17 @@ const StyledLandingPage = styled.section`
     justify-content: space-around;
     a {
       opacity: 0;
-      border-radius: 1px;
-      border: 1px solid black;
+      border-radius: 30px;
+      border: 3px solid black;
+      cursor: pointer;
       padding: 15px 30px;
       color: black;
       margin: 50px 0;
+      transition: all 0.5s;
+      &:hover {
+        background-color: ${props => props.theme.colors.dark};
+        color: ${props => props.theme.colors.light};
+      }
     }
     h5 {
       opacity: 0;

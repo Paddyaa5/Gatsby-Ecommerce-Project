@@ -87,7 +87,7 @@ const Shop = ({ data }) => {
                 />
                 <div className="text-container">
                   <h1>{item.frontmatter.title}</h1>
-                  <h5>{item.frontmatter.price}</h5>
+                  <h5>£{item.frontmatter.price.toFixed(2)}</h5>
                 </div>
               </StyledItem>
             </Link>

@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
-import { GlobalStateContext } from "../context/GlobalContextProvider"
 import styled from "styled-components"
+import { CartContext } from "../context/GlobalContextProvider"
 import {
   FaShoppingCart,
   FaInstagram,
@@ -74,7 +74,7 @@ const StyledSidebar = styled.section`
     display: block;
   }
   .active {
-    border-bottom: 2px solid ${props => props.theme.colors.dark};
+    border-bottom: 2px solid pink;
   }
   .icons {
     display: flex;
@@ -99,8 +99,8 @@ const Sidebar = () => {
     }
   `)
   const { title, copyright } = data.site.siteMetadata
-  const state = useContext(GlobalStateContext)
-
+  const { cartContext } = useContext(CartContext)
+  const [cart] = cartContext
   return (
     <StyledSidebar>
       <div className="nav-top">
@@ -109,7 +109,7 @@ const Sidebar = () => {
         </Link>
         <Link to="/shop/basket" className="cart-section">
           <FaShoppingCart></FaShoppingCart>
-          <div className="circle">{state.basketCounter}</div>
+          <div className="circle">{cart.length}</div>
         </Link>
       </div>
       <div className="menu-list">

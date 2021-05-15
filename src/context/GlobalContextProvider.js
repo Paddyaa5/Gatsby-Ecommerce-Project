@@ -1,50 +1,16 @@
-import React, { useReducer, createContext } from "react"
+import React, { useState, createContext } from "react"
 
-export const GlobalStateContext = createContext()
-export const GlobalDispatchContext = createContext()
+export const CartContext = createContext()
 
-const initialState = {
-  basketCounter: 0,
-  basket: [],
-}
-function basketCounterReducer(state, action) {
-  switch (action.type) {
-    case "INCREMENT_BASKET":
-      return {
-        ...state,
-        basketCounter: state.basketCounter + 1,
-      }
-    case "DECREMENT_BASKET":
-      if (state > 0) {
-        return {
-          ...state,
-          basketCounter: state.basketCounter - 1,
-        }
-      } else {
-        return {
-          ...state,
-          basketCounter: (state.basketCounter = 0),
-        }
-      }
-    case "CLEAR_BASKET":
-      return {
-        ...state,
-        basketCounter: (state.basketCounter = 0),
-      }
-    default:
-      throw new Error("Bad Action Type")
-  }
-}
+export const CartProvider = ({ children }) => {
+  const [cart, setCart] = useState([])
+  const [total, setTotal] = useState(0)
 
-const GlobalContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(basketCounterReducer, initialState)
   return (
-    <GlobalStateContext.Provider value={state}>
-      <GlobalDispatchContext.Provider value={dispatch}>
-        {children}
-      </GlobalDispatchContext.Provider>
-    </GlobalStateContext.Provider>
+    <CartContext.Provider
+      value={{ cartContext: [cart, setCart], totalContext: [total, setTotal] }}
+    >
+      {children}
+    </CartContext.Provider>
   )
 }
-
-export default GlobalContextProvider
